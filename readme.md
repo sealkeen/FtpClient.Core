@@ -1,7 +1,7 @@
 ## Overview
 ### FTP client Core
 - Saved .Net Framework 4.0 x86 WinApi <-> .Net Core 3.1 WinApiS - cross-windows support (.csproj_vs2010 / .csproj)
-- usage:
+### Usage
 ``` C#
     var _client = new Client("ftp://127.0.0.1", "login", "password");
     public Action<string> _log;
@@ -14,8 +14,10 @@
 	{
 		Program._client.DownloadFile(selectedFile.Name, saveFileDialog.FileName);
 	}
-    
-    	// Send 
+``` 
+- Send 
+``` C#
+    	
 	public void Send(Dictionary<string, string> sourceTargetFiles, string outputDirectory = "")
 	{
 		try {
