@@ -8,8 +8,8 @@
     <ProjectGuid>{B887DA1E-D759-4650-9AA5-FCC17F39BFDD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ClassLibrary1</RootNamespace>
-    <AssemblyName>ClassLibrary1</AssemblyName>
+    <RootNamespace>FtpClient.Core</RootNamespace>
+    <AssemblyName>FtpClient.Core</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
