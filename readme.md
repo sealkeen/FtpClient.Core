@@ -1,5 +1,6 @@
 ## Overview
 ### FTP client Core
+- Saved .Net Framework 4.0 x86 WinApi <-> .Net Core 3.1 WinApiS - cross-windows support (.csproj_vs2010 / .csproj)
 
 ### Functional
 - Connect to an FTP server;
