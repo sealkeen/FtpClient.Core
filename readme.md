@@ -5,7 +5,9 @@
 ``` C#
     var _client = new Client("ftp://127.0.0.1", "login", "password");
     public Action<string> _log;
-	// Download 
+``` 
+- Download 
+``` C#
 	SaveFileDialog saveFileDialog = new SaveFileDialog();
 	bool? ok = saveFileDialog.ShowDialog();
 	if (ok.HasValue && ok.Value == true)
