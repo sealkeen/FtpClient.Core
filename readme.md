@@ -5,29 +5,28 @@
 ``` C#
     var _client = new Client("ftp://127.0.0.1", "login", "password");
     public Action<string> _log;
-    public void Send(Dictionary<string, string> sourceTargetFiles, string outputDirectory = "")
-    {
-        try
-        {
-            foreach (var pair in sourceTargetFiles)
-            {
-                _log?.Invoke("Выполняется попытка отправить файлы на FTP сервер.");
-                _log?.Invoke("Sending file to FTP server...");
-                string response = "";
-                try { 
-                    _log?.Invoke($"Creating output directory <{outputDirectory}>... ");
-                    response = _client?.MakeDirectory(outputDirectory);
-                    _log?.Invoke($"Server Respose : {response}");
-                } catch (Exception ex) { } // Ignore create directory error
-                response = _client?.UploadFile(pair.Key, Path.Combine(outputDirectory, pair.Value));
-                _log?.Invoke($"Server Respose : {response}");
-            }
-        }
-        catch (Exception ex)
-        {
-            _log?.Invoke($"Error occured : {ex.Message}");
-        }
-    }
+	// Download 
+	SaveFileDialog saveFileDialog = new SaveFileDialog();
+	bool? ok = saveFileDialog.ShowDialog();
+	if (ok.HasValue && ok.Value == true)
+	{
+		Program._client.DownloadFile(selectedFile.Name, saveFileDialog.FileName);
+	}
+    
+    	// Send 
+	public void Send(Dictionary<string, string> sourceTargetFiles, string outputDirectory = "")
+	{
+		try {
+			foreach (var pair in sourceTargetFiles)
+			{
+				string response = "";
+				try { 
+					response = _client?.MakeDirectory(outputDirectory);
+				} catch (Exception ex) { } // Ignore create directory error
+					response = _client?.UploadFile(pair.Key, Path.Combine(outputDirectory, pair.Value));
+			}
+		} catch (Exception ex) { _log?.Invoke($"Error occured : {ex.Message}"); }
+	}
 ```
 ### Functional
 - Connect to an FTP server;
