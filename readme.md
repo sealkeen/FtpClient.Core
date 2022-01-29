@@ -20,8 +20,8 @@ if (ok.HasValue && ok.Value == true)
 ``` C#			
 Dictionary<string, string> sourceTargetFiles = new Dictionary<string, string>() { { "C:/filename.txt", "filename.txt" } };
 string outputDirectory = "foldername";
+string response = "";
 foreach (var pair in sourceTargetFiles) {
-	string response = "";
 	try { response = _client?.MakeDirectory(outputDirectory); } catch (Exception ex) { } // Console.WriteLine(response);
 	response = _client?.UploadFile(pair.Key, Path.Combine(outputDirectory, pair.Value)); // Console.WriteLine(response);
 }
