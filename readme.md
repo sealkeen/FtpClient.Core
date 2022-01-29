@@ -16,18 +16,18 @@
 	}
 ``` 
 - Send 
-``` C#
-	public void Send(Dictionary<string, string> sourceTargetFiles, string outputDirectory = "")
-	{
-		try {
-			foreach (var pair in sourceTargetFiles) {
-				string response = "";
-				try { response = _client?.MakeDirectory(outputDirectory); } 
-				catch (Exception ex) { } // Ignore create directory error
-				response = _client?.UploadFile(pair.Key, Path.Combine(outputDirectory, pair.Value));
-			}
-		} catch (Exception ex) { // handle error }
-	}
+``` C#			
+Dictionary<string, string> sourceTargetFiles = new Dictionary<string, string>() { { "C:/filename.txt", "filename.txt" } };
+string outputDirectory = "foldername";
+
+	try {
+		foreach (var pair in sourceTargetFiles) {
+			string response = "";
+			try { response = _client?.MakeDirectory(outputDirectory); } 
+			catch (Exception ex) { } // Ignore create directory error
+			response = _client?.UploadFile(pair.Key, Path.Combine(outputDirectory, pair.Value));
+		}
+	} catch (Exception ex) { // handle error }
 ```
 ### Functional
 - Connect to an FTP server;
