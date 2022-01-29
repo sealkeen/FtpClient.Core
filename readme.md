@@ -4,7 +4,6 @@
 ### Usage
 ``` C#
     var _client = new Client("ftp://127.0.0.1", "login", "password");
-    public Action<string> _log;
 ``` 
 - Download 
 ``` C#
@@ -23,9 +22,8 @@ string outputDirectory = "foldername";
 	try {
 		foreach (var pair in sourceTargetFiles) {
 			string response = "";
-			try { response = _client?.MakeDirectory(outputDirectory); } 
-			catch (Exception ex) { } // Ignore create directory error
-			response = _client?.UploadFile(pair.Key, Path.Combine(outputDirectory, pair.Value));
+			try { response = _client?.MakeDirectory(outputDirectory); } catch (Exception ex) { } // Console.WriteLine(response);
+			response = _client?.UploadFile(pair.Key, Path.Combine(outputDirectory, pair.Value)); // Console.WriteLine(response);
 		}
 	} catch (Exception ex) { // handle error }
 ```
