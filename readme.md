@@ -4,28 +4,27 @@
 ### Usage
 - List 
 ``` C#
-    	var _client = new Client("ftp://127.0.0.1", "login", "password");
-	List<FileDirectoryInfo> _fileDirInfos = _client.GetFileDirectoryInfos();
+var _client = new Client("ftp://127.0.0.1", "login", "password");
+List<FileDirectoryInfo> _fileDirInfos = _client.GetFileDirectoryInfos();
 ``` 
 - Download 
 ``` C#
-	SaveFileDialog saveFileDialog = new SaveFileDialog();
-	bool? ok = saveFileDialog.ShowDialog();
-	if (ok.HasValue && ok.Value == true)
-	{
-		client.DownloadFile(selectedFile.Name, saveFileDialog.FileName);
-	}
+SaveFileDialog saveFileDialog = new SaveFileDialog();
+bool? ok = saveFileDialog.ShowDialog();
+if (ok.HasValue && ok.Value == true)
+{
+	client.DownloadFile(selectedFile.Name, saveFileDialog.FileName);
+}
 ``` 
 - Send 
 ``` C#			
-	Dictionary<string, string> sourceTargetFiles = new Dictionary<string, string>() { { "C:/filename.txt", "filename.txt" } };
-	string outputDirectory = "foldername";
-	foreach (var pair in sourceTargetFiles) {
-		string response = "";
-		try { response = _client?.MakeDirectory(outputDirectory); } catch (Exception ex) { } // Console.WriteLine(response);
-		response = _client?.UploadFile(pair.Key, Path.Combine(outputDirectory, pair.Value)); // Console.WriteLine(response);
-	}
-
+Dictionary<string, string> sourceTargetFiles = new Dictionary<string, string>() { { "C:/filename.txt", "filename.txt" } };
+string outputDirectory = "foldername";
+foreach (var pair in sourceTargetFiles) {
+	string response = "";
+	try { response = _client?.MakeDirectory(outputDirectory); } catch (Exception ex) { } // Console.WriteLine(response);
+	response = _client?.UploadFile(pair.Key, Path.Combine(outputDirectory, pair.Value)); // Console.WriteLine(response);
+}
 ```
 ### Functional
 - Connect to an FTP server;
