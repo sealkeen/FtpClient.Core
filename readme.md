@@ -4,17 +4,18 @@
 - usage:
 ``` C#
     var _client = new Client("ftp://127.0.0.1", "login", "password");
+    public Action<string> _log;
     public void Send(Dictionary<string, string> sourceTargetFiles, string outputDirectory = "")
     {
-            try
+        try
         {
             foreach (var pair in sourceTargetFiles)
             {
                 _log?.Invoke("Выполняется попытка отправить файлы на FTP сервер.");
                 _log?.Invoke("Sending file to FTP server...");
-                _log?.Invoke($"Creating output directory <{outputDirectory}>... ");
                 string response = "";
                 try { 
+                    _log?.Invoke($"Creating output directory <{outputDirectory}>... ");
                     response = _client?.MakeDirectory(outputDirectory);
                     _log?.Invoke($"Server Respose : {response}");
                 } catch (Exception ex) { } // Ignore create directory error
