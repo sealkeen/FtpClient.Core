@@ -12,24 +12,21 @@
 	bool? ok = saveFileDialog.ShowDialog();
 	if (ok.HasValue && ok.Value == true)
 	{
-		Program._client.DownloadFile(selectedFile.Name, saveFileDialog.FileName);
+		client.DownloadFile(selectedFile.Name, saveFileDialog.FileName);
 	}
 ``` 
 - Send 
 ``` C#
-    	
 	public void Send(Dictionary<string, string> sourceTargetFiles, string outputDirectory = "")
 	{
 		try {
-			foreach (var pair in sourceTargetFiles)
-			{
+			foreach (var pair in sourceTargetFiles) {
 				string response = "";
-				try { 
-					response = _client?.MakeDirectory(outputDirectory);
-				} catch (Exception ex) { } // Ignore create directory error
-					response = _client?.UploadFile(pair.Key, Path.Combine(outputDirectory, pair.Value));
+				try { response = _client?.MakeDirectory(outputDirectory); } 
+				catch (Exception ex) { } // Ignore create directory error
+				response = _client?.UploadFile(pair.Key, Path.Combine(outputDirectory, pair.Value));
 			}
-		} catch (Exception ex) { _log?.Invoke($"Error occured : {ex.Message}"); }
+		} catch (Exception ex) { // handle error }
 	}
 ```
 ### Functional
