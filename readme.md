@@ -4,8 +4,8 @@
 ### Usage
 - List 
 ``` C#
-    var _client = new Client("ftp://127.0.0.1", "login", "password");
-       List<FileDirectoryInfo> _fileDirInfos = _client.GetFileDirectoryInfos();
+    	var _client = new Client("ftp://127.0.0.1", "login", "password");
+	List<FileDirectoryInfo> _fileDirInfos = _client.GetFileDirectoryInfos();
 ``` 
 - Download 
 ``` C#
