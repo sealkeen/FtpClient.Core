@@ -4,4 +4,10 @@
     <TargetFrameworks>netstandard2.0; netstandard2.1; net40</TargetFrameworks>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Properties\**" />
+    <EmbeddedResource Remove="Properties\**" />
+    <None Remove="Properties\**" />
+  </ItemGroup>
+
 </Project>
